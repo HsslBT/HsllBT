@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hybrid SSL Model - Summary</title>
+
+<style>
+:root{
+    --primary:#1e40af;
+    --accent:#0ea5e9;
+    --bg:#f1f5f9;
+    --card:#ffffff;
+    --text:#0f172a;
+}
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family: "Segoe UI", Tahoma, sans-serif;
+}
+
+body{
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.7;
+}
+
+header{
+    background:var(--primary);
+    color:white;
+    padding:30px;
+    text-align:center;
+}
+
+header h1{
+    font-size:28px;
+}
+
+.container{
+    max-width:1100px;
+    margin:40px auto;
+    padding:20px;
+}
+
+.card{
+    background:var(--card);
+    padding:25px;
+    margin-bottom:25px;
+    border-radius:14px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-4px);
+}
+
+h2{
+    color:var(--primary);
+    margin-bottom:15px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+}
+
+th, td{
+    padding:12px;
+    border:1px solid #e2e8f0;
+    text-align:center;
+}
+
+th{
+    background:var(--accent);
+    color:white;
+}
+
+button{
+    background:var(--primary);
+    color:white;
+    border:none;
+    padding:10px 18px;
+    border-radius:8px;
+    cursor:pointer;
+    margin-top:10px;
+}
+
+button:hover{
+    opacity:0.85;
+}
+
+.hidden{
+    display:none;
+}
+
+.highlight{
+    color:#dc2626;
+    font-weight:bold;
+}
+
+footer{
+    text-align:center;
+    padding:20px;
+    margin-top:40px;
+    color:#64748b;
+}
+
+.Ex{
+    color:#dc2626;
+    
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Hybrid SSL Model for Retinal Images</h1>
+<p>Scientific Contribution Summary</p>
+</header>
+
+<div class="container">
+
+<!-- Phase 1 -->
+<div class="card">
+<h2>Phase 1 : Base Models Implementation</h2>
+<ul>
+<li>SimCLR</li>
+<li>BYOL</li>
+<li>MAE</li>
+<li>...</li>
+</ul>
+
+<p><strong>Training Setup:</strong></p>
+<ul>
+<li>Dataset</li>
+<li>Epochs</li>
+<li>Optimizer</li>
+<li>Data Augmentation</li>
+</ul>
+
+<p>📊 Les résultats ont été enregistrés pour comparaison.</p>
+</div>
+
+<!-- Phase 2 -->
+<div class="card">
+<h2>Phase 2 : Strengths & Weaknesses Analysis</h2>
+<table>
+<tr>
+<th>Model</th>
+<th>Points forts</th>
+<th>Points faibles</th>
+</tr>
+<tr>
+<td>SimCLR</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>BYOL</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>MAE</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</table>
+</div>
+
+<!-- Phase 3 -->
+<div class="card">
+<h2>Phase 3 : Fusion Strategy</h2>
+<p>Selected Components:</p>
+<p class="Ex">(exemple)</p>
+<ul>
+<li>Encoder from MAE</li>
+<li>Momentum strategy from BYOL</li>
+<li>Light contrastive regularization from SimCLR</li>
+</ul>
+
+<p class="highlight">
+Final Idea: MAE + BYOL-style training + Contrastive regularization
+</p>
+</div>
+
+<!-- Phase 4 -->
+<div class="card">
+<h2>Phase 4 : Global Architecture</h2>
+<p class="Ex">(exemple)</p>
+<p><strong>Hybrid SSL for Retinal Images</strong></p>
+<ul>
+<li>1️⃣ Masked Image Modeling (MAE)</li>
+<li>2️⃣ Momentum Teacher-Student (BYOL)</li>
+<li>3️⃣ Device-aware Contrastive Loss</li>
+</ul>
+
+<button onclick="toggleWhy()">Pourquoi cette combinaison ?</button>
+
+<div id="whySection" class="hidden">
+
+<p>MAE → apprend la structure globale rétinienne</p>
+<p>BYOL → évite le collapse</p>
+<p>Contrastive → améliore la discrimination des maladies</p>
+<p>Device-aware → améliore la robustesse inter-appareils</p>
+</div>
+</div>
+
+<!-- Phase 5 -->
+<div class="card">
+<h2>Phase 5 : Final Loss Function</h2>
+<p class="Ex">(exemple)</p>
+<p><strong>Total Loss =</strong></p>
+<p>
+L<sub>MAE</sub> + λ₁ L<sub>BYOL</sub> + λ₂ L<sub>DeviceContrast</sub>
+</p>
+<p class="highlight">
+→ Contribution scientifique principale
+</p>
+</div>
+
+<!-- Phase 6 -->
+<div class="card">
+<h2>Phase 6 : Training Protocol</h2>
+<p>
+Le modèle hybride a été entraîné dans les mêmes conditions que les modèles de comparaison pour garantir une évaluation équitable.
+</p>
+</div>
+
+<!-- Phase 7 -->
+<div class="card">
+<h2>Phase 7 : Performance Comparison</h2>
+<table>
+<tr>
+<th>Model</th>
+<th>Accuracy</th>
+<th>F1</th>
+<th>Kappa</th>
+<th>Cross-device</th>
+</tr>
+<tr>
+<td>SimCLR</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>BYOL</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>MAE</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+
+<tr>
+<td class="highlight">Hybrid</td>
+<td class="highlight">🔥</td>
+<td class="highlight">🔥</td>
+<td class="highlight">🔥</td>
+<td class="highlight">🔥</td>
+</tr>
+</table>
+</div>
+
+<!-- Phase 8 -->
+<div class="card">
+<h2>Phase 8 : Why Hybrid Performs Better</h2>
+<p class="Ex">(exemple)</p>
+<p> 
+The hybrid model combines global structural learning (MAE), 
+representation stability (BYOL), and discriminative power (Contrastive learning), 
+while improving robustness across devices.
+</p>
+</div>
+
+</div>
+
+<footer>
+© 2026 – Research Work | Belarbi Boumediene ,Taibi Mohammed
+</footer>
+
+<script>
+function toggleWhy(){
+    document.getElementById("whySection").classList.toggle("hidden");
+}
+</script>
+
+</body>
+</html>
