@@ -161,6 +161,125 @@ footer{
 }
 
 
+
+
+
+.pipeline-container{
+  width: 700px;
+  margin: 40px auto;
+  font-family: "Segoe UI", sans-serif;
+  text-align: center;
+  color: #0f172a;
+}
+
+.box{
+  background: #f1f5f9;
+  border: 2px solid #2563eb;
+  border-radius: 10px;
+  padding: 12px 18px;
+  font-weight: 600;
+  margin: 6px auto;
+  width: fit-content;
+  min-width: 220px;
+}
+
+.arrow{
+  font-size: 22px;
+  margin: 6px 0;
+  color: #2563eb;
+}
+
+.loss-box{
+  border: 2px dashed #16a34a;
+  border-radius: 12px;
+  padding: 14px 20px;
+  margin: 10px auto;
+  background: #ecfdf5;
+  width: fit-content;
+}
+
+.loss-title{
+  font-weight: 700;
+  color: #15803d;
+}
+
+.loss-sub{
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+.parallel{
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin: 15px 0;
+}
+
+.net{
+  border-radius: 12px;
+  padding: 16px 22px;
+  width: 220px;
+  position: relative;
+  font-weight: 600;
+}
+
+.student{
+  background: #e0f2fe;
+  border: 2px solid #0284c7;
+}
+
+.teacher{
+  background: #fff7ed;
+  border: 2px solid #ea580c;
+}
+
+.net-title{
+  font-size: 15px;
+}
+
+.momentum{
+  margin-top: 6px;
+  font-size: 12px;
+  color: #ea580c;
+  font-weight: 700;
+}
+
+.distill{
+  margin: 12px auto;
+  padding: 14px 22px;
+  border: 2px solid #7c3aed;
+  border-radius: 12px;
+  background: #f5f3ff;
+  font-weight: 700;
+  width: fit-content;
+}
+
+.distill span{
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.final-box{
+  margin-top: 12px;
+  padding: 16px 24px;
+  background: linear-gradient(135deg,#2563eb,#7c3aed);
+  color: white;
+  border-radius: 14px;
+  font-weight: 700;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.final-box span{
+  font-size: 12px;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+
+
+
+
+
 </style>
 </head>
 
@@ -189,7 +308,7 @@ footer{
 <li>SimCLR</li>
 <li>BYOL</li>
 <li>MAE</li>
-<li>...</li>
+<li>DINO</li>
 </ul>
 
 <p><strong>Training Setup:</strong></p>
@@ -207,83 +326,117 @@ footer{
 <div class="card">
 <h2>Phase 2 : Strengths & Weaknesses Analysis</h2>
 <table>
-<tr>
-<th>Model</th>
-<th>Points forts</th>
-<th>Points faibles</th>
-</tr>
-<tr>
-<td>SimCLR</td>
-<td>...</td>
-<td>...</td>
-</tr>
-<tr>
-<td>BYOL</td>
-<td>...</td>
-<td>...</td>
-</tr>
-<tr>
-<td>MAE</td>
-<td>...</td>
-<td>...</td>
-</tr>
-<tr>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-</tr>
+  <tr>
+    <th>Modèle</th>
+    <th>Points forts</th>
+    <th>Points faibles</th>
+  </tr>
+  <tr>
+    <td>SimCLR</td>
+    <td>Représentations discriminantes fortes – Théorie simple</td>
+    <td>Nécessite un grand batch size – Dépend des negatives</td>
+  </tr>
+  <tr>
+    <td>BYOL</td>
+    <td>Ne nécessite pas de negatives – Représentation stable</td>
+    <td>Peut s'effondrer sans un bon réglage – Dépend du momentum</td>
+  </tr>
+  <tr>
+    <td>MAE</td>
+    <td>Excellent pour comprendre la structure globale de l'image – Efficace avec ViT</td>
+    <td>Moins précis sur les détails fins sans fine-tuning</td>
+  </tr>
+  <tr>
+    <td>DINO</td>
+    <td>Excellente performance avec Vision Transformers – Très performant</td>
+    <td>Paramètres sensibles – Dépend du mécanisme teacher-student</td>
+  </tr>
 </table>
 </div>
 
 <!-- Phase 3 -->
 <div class="card">
-<h2>Phase 3 : Fusion Strategy</h2>
-<p>Selected Components:</p>
-<p class="Ex">(exemple)</p>
-<ul>
-<li>Encoder from MAE</li>
-<li>Momentum strategy from BYOL</li>
-<li>Light contrastive regularization from SimCLR</li>
-</ul>
+  <h2>Phase 3 : Fusion Strategy</h2>
 
-<p class="highlight">
-Final Idea: MAE + BYOL-style training + Contrastive regularization
-</p>
+  <p>Selected Components:</p>
+
+  <ul>
+    <li><strong>MAE</strong> → compréhension de la <strong>structure globale</strong> des données (structure learning)</li>
+    <li><strong>DINO</strong> → représentation <strong>discriminative</strong> puissante (discriminative representation)</li>
+    <li><strong>BYOL</strong> → stabilité de l’apprentissage via la stratégie de <strong>momentum</strong></li>
+  </ul>
+
+  <p class="highlight">
+    Final Idea: <strong>Fusion Model</strong> = MAE (structure) + DINO (discriminative) + BYOL (momentum)
+  </p>
+
 </div>
+
+
+
+
 
 <!-- Phase 4 -->
 <div class="card">
-<h2>Phase 4 : Global Architecture</h2>
-<p class="Ex">(exemple)</p>
-<p><strong>Hybrid SSL for Retinal Images</strong></p>
-<ul>
-<li>1️⃣ Masked Image Modeling (MAE)</li>
-<li>2️⃣ Momentum Teacher-Student (BYOL)</li>
-<li>3️⃣ Device-aware Contrastive Loss</li>
-</ul>
+<h2>Phase 4 : Architecture</h2>
 
-<button onclick="toggleWhy()">Pourquoi cette combinaison ?</button>
+<div class="pipeline-container">
 
-<div id="whySection" class="hidden">
+  <div class="box">Input Image</div>
+  <div class="arrow">↓</div>
 
-<p>MAE → apprend la structure globale rétinienne</p>
-<p>BYOL → évite le collapse</p>
-<p>Contrastive → améliore la discrimination des maladies</p>
-<p>Device-aware → améliore la robustesse inter-appareils</p>
+  <div class="box">Masking (MAE)</div>
+  <div class="arrow">↓</div>
+
+  <div class="box">ViT Encoder</div>
+  <div class="arrow">↓</div>
+
+  <div class="loss-box">
+    <div class="loss-title">Reconstruction Loss</div>
+    <div class="loss-sub">(MSE – MAE Objective)</div>
+  </div>
+
+  <div class="arrow">↓</div>
+
+  <div class="box">Multi-Crop Views (DINO)</div>
+  <div class="arrow">↓</div>
+
+  <div class="parallel">
+    <div class="net student">
+      <div class="net-title">Student Network</div>
+    </div>
+
+    <div class="net teacher">
+      <div class="net-title">Teacher Network</div>
+      <div class="momentum">Momentum (EMA)</div>
+    </div>
+  </div>
+
+  <div class="distill">
+    Distillation Loss<br>
+    <span>(Cross-Entropy – Soft Targets)</span>
+  </div>
+
+  <div class="arrow">↓</div>
+
+  <div class="final-box">
+    Unified Representation Space<br>
+    <span>Fusion Model Output</span>
+  </div>
+
 </div>
+
+
+
+
 </div>
 
 <!-- Phase 5 -->
 <div class="card">
 <h2>Phase 5 : Final Loss Function</h2>
 <p class="Ex">(exemple)</p>
-<p><strong>Total Loss =</strong></p>
-<p>
-L<sub>MAE</sub> + λ₁ L<sub>BYOL</sub> + λ₂ L<sub>DeviceContrast</sub>
-</p>
-<p class="highlight">
-→ Contribution scientifique principale
-</p>
+<p><strong>Total Loss = ...</strong></p>
+
 </div>
 
 <!-- Phase 6 -->
@@ -362,7 +515,7 @@ while improving robustness across devices.
 </footer>
 
 <script>
-const PASSWORD = "Hybrid2026";  
+const PASSWORD = "022026";  
 
 function checkPassword(){
     const input = document.getElementById("passwordInput").value;
